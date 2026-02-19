@@ -1,1 +1,1 @@
-I only use nix because the neofetch looks cool.
+I only use nixos because the neofetch looks cool.
