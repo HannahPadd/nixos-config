@@ -124,22 +124,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    alacritty
+    discord
+    fastfetch
+    fish
     git
     gh
-    wget
-    discord
-    steam
-    vscode
-    jetbrains.idea
-    spotify
-    neovim
-    fastfetch
     hyfetch
+    jetbrains.idea
     kitty
-    fish
-    alacritty
+    neovim
+    obsidian
+    spotify
     steam
+    tmux
+    vim 
+    vscode
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
