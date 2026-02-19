@@ -1,1 +1,1 @@
-I only use nix because the hyfetch looks cool.
+I only use nix because the neofetch looks cool.
