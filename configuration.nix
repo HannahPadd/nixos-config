@@ -89,8 +89,10 @@
     isNormalUser = true;
     description = "Hannah Lynn Lindrob";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
       kdePackages.kate
+      spotify
       # thunderbird
     ];
   };
@@ -112,6 +114,13 @@
     };
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -128,6 +137,9 @@
     fastfetch
     hyfetch
     kitty
+    fish
+    alacritty
+    steam
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -144,8 +156,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 57621 ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
