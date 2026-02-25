@@ -42,7 +42,7 @@ in
 
     nixfmt
 
-    jetbrains.idea
+    jetbrains.idea-oss
     neovim
     obsidian
     spotify
