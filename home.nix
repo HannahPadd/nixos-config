@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
+
+let
+  modules = ./home-modules;
+in
 {
+  imports = [
+    (modules + /shell.nix)
+  ];
+
   home.username = "hannah";
   home.homeDirectory = "/home/hannah";
 
@@ -24,8 +32,11 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    oh-my-zsh
+    nerd-fonts.fira-code
 
-  alacritty
+    starship
+    alacritty
     discord
     fastfetch
 
@@ -100,11 +111,14 @@
     enable = true;
     userName = "HannahPadd";
     userEmail = "hannah@lindrob.nl";
-};
+  };
 
-
-
-
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -115,4 +129,5 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.11";
+
 }

@@ -72,8 +72,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -87,11 +86,8 @@
   users.users.hannah = {
     isNormalUser = true;
     description = "Hannah Lynn Lindrob";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "dialout" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   # Install firefox.
