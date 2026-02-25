@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 
 let
@@ -7,6 +7,8 @@ in
 {
   imports = [
     (modules + /shell.nix)
+    (modules + "/quickshell.nix")
+    ./plasma.nix
   ];
 
   home.username = "hannah";
@@ -34,11 +36,16 @@ in
   home.packages = with pkgs; [
     oh-my-zsh
     nerd-fonts.fira-code
+    librewolf
 
     starship
     alacritty
     discord
     fastfetch
+
+    inputs.kwin-effects-glass.packages.${pkgs.system}.default # for KDE Wayland
+    inputs.kwin-effects-glass.packages.${pkgs.system}.x11 # for KDE X11
+    inputs.nixos-splash-plasma6.packages.${pkgs.system}.default
 
     nixfmt
 
@@ -113,11 +120,17 @@ in
     userEmail = "hannah@lindrob.nl";
   };
 
-  programs.zsh = {
+  programs.alacritty = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+      settings = {
+      general.live_config_reload = true;
+      window.opacity = 0.0;
+      window.blur = true;
+      window.dimensions = {
+        lines = 40;
+        columns = 110;
+      };
+    };
   };
 
   # This value determines the home Manager release that your
