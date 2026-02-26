@@ -35,8 +35,9 @@ in
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     oh-my-zsh
-    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono 
     librewolf
+    thunderbird
 
     blender
 
@@ -124,12 +125,39 @@ in
 
   programs.alacritty = {
     enable = true;
-      settings = {
+    settings = {
+      cursor = {
+        style = "Underline";
+        vi_mode_style = "None";
+        unfocused_hollow = true;
+        thickness = 0.15;
+      };
+      font.size = 12;
+      font.normal = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Regular";
+      };
+      font.bold = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Bold";
+      };
+      font.italic = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Italic";
+      };
+      font.bold_italic = {
+        family = "JetBrainsMono Nerd Font";
+        style = "Bold Italic";
+      };
       general.live_config_reload = true;
+      selection = {
+        semantic_escape_chars = ",│`|:\"' ()[]{}<>\t";
+        save_to_clipboard = true;
+      };
       window.opacity = 0.0;
       window.blur = true;
       window.dimensions = {
-        lines = 40;
+        lines = 35;
         columns = 110;
       };
     };
