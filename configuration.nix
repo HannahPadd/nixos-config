@@ -103,14 +103,29 @@
   environment.systemPackages = with pkgs; [
     git
     gh
+    steam
+    gamescope-wsi
+    protonup-qt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
    programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  programs.steam = {
+    enable = true; # Master switch, already covered in installation
+    remotePlay.openFirewall = true;  # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server hosting
+    # Other general flags if available can be set here.
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = false;
   };
 
   # List services that you want to enable:
