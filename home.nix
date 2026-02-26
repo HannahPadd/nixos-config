@@ -38,6 +38,8 @@ in
     nerd-fonts.fira-code
     librewolf
 
+    blender
+
     starship
     alacritty
     discord
