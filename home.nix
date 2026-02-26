@@ -3,6 +3,20 @@
 
 let
   modules = ./home-modules;
+
+    enableWayland =
+    drv: bin:
+    drv.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+      postFixup = (old.postFixup or "") + ''
+        wrapProgram $out/bin/${bin} \
+          --add-flags "--enable-features=UseOzonePlatform,WaylandWindowDecorations,WaylandPerMonitorScaling" \
+          --add-flags "--ozone-platform=wayland"
+      '';
+    });
+
+  discord-wl = enableWayland pkgs.discord "discord";
+  spotify-wl = enableWayland pkgs.spotify "spotify";
 in
 {
   imports = [
@@ -43,7 +57,7 @@ in
 
     starship
     alacritty
-    discord
+    discord-wl
     fastfetch
 
     inputs.kwin-effects-glass.packages.${pkgs.system}.default # for KDE Wayland
@@ -51,6 +65,10 @@ in
     inputs.nixos-splash-plasma6.packages.${pkgs.system}.default
 
     nixfmt
+
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
+    catppuccin-kvantum
 
     jetbrains.idea-oss
     neovim
