@@ -133,12 +133,14 @@ in
     pciutils # lspci
     usbutils # lsusb
     direnv
+    wayvr
+    xrizer
   ];
 
   programs.git = {
     enable = true;
-    userName = "HannahPadd";
-    userEmail = "hannah@lindrob.nl";
+    settings.user.name = "HannahPadd";
+    settings.user.email = "hannah@lindrob.nl";
   };
 
   programs.alacritty = {
