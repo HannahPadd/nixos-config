@@ -52,6 +52,7 @@ in
     nerd-fonts.jetbrains-mono 
     librewolf
     thunderbird
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     blender
 

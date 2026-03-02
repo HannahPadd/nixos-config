@@ -147,7 +147,8 @@
         "nixos-splash-plasma6": "nixos-splash-plasma6",
         "nixpkgs": "nixpkgs",
         "plasma-manager": "plasma-manager",
-        "quickshell": "quickshell"
+        "quickshell": "quickshell",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -195,6 +196,26 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772340029,
+        "narHash": "sha256-4KmL71wCRrkooDKEClMrKgG0QBAcBYYPnFNltYXyhYg=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "0ffb3ae574f1048ecfce7e3ffc25693f8cd7ee91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }
