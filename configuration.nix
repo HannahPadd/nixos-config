@@ -106,9 +106,18 @@
   programs.zsh.enable = true;
 
   programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = ["hannah"];
-  virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.libvirtd = {
+  enable = true;
+  qemu = {
+    package = pkgs.qemu_kvm;
+    runAsRoot = true;
+    swtpm.enable = true; # Enables TPM emulator
+    };
+  };
+  users.groups.libvirtd.members = ["hannah"];
+
+
   virtualisation.docker.enable = true;
 
   virtualisation.docker.rootless = {
