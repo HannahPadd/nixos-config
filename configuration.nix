@@ -65,6 +65,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -83,7 +84,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -166,6 +167,9 @@
     enable = true;
     capSysNice = false;
   };
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   # List services that you want to enable:
 

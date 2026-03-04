@@ -60,6 +60,7 @@ in
     alacritty
     discord-wl
     fastfetch
+    appimage-run
 
     inputs.kwin-effects-glass.packages.${pkgs.system}.default # for KDE Wayland
     inputs.kwin-effects-glass.packages.${pkgs.system}.x11 # for KDE X11
@@ -69,6 +70,7 @@ in
 
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
+    kdePackages.krdc
     catppuccin-kvantum
 
     jetbrains.idea-oss
@@ -82,6 +84,7 @@ in
     wget
     zsh
     hyfetch
+    gimp
 
     nnn # terminal file manager
 
