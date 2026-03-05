@@ -72,6 +72,7 @@ in
     kdePackages.qtstyleplugin-kvantum
     kdePackages.krdc
     catppuccin-kvantum
+    prismlauncher
 
     jetbrains.idea-oss
     neovim
