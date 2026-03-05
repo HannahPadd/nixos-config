@@ -146,6 +146,7 @@
     steam
     gamescope-wsi
     protonup-qt
+    ntfs3g
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
