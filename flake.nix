@@ -66,7 +66,7 @@
             home-manager.users.hannah = {
               imports = [
                 ./home.nix
-                plasma-manager.homeManagerModules.plasma-manager
+                plasma-manager.homeModules.plasma-manager
               ];
             };
           }
