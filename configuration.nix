@@ -160,6 +160,10 @@ services.udev.extraRules = ''
     gamescope-wsi
     protonup-qt
     ntfs3g
+    wineWow64Packages.stable
+    winetricks
+    wineWow64Packages.waylandFull
+    slimevr
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
