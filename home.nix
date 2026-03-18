@@ -61,6 +61,8 @@ in
     discord-wl
     fastfetch
     appimage-run
+    moonlight-qt
+    parsec-bin
 
     inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default # for KDE Wayland
     inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.x11 # for KDE X11
