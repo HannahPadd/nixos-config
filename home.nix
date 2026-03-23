@@ -64,8 +64,9 @@ in
     moonlight-qt
     parsec-bin
 
-    inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default # for KDE Wayland
-    inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.x11 # for KDE X11
+    ##These are boken right now :(
+    #inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default # for KDE Wayland
+    #inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.x11 # for KDE X11
     inputs.nixos-splash-plasma6.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     nixfmt

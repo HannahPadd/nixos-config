@@ -271,7 +271,7 @@
       kwinrc.Effect-blur.BlurStrength = 14;
       kwinrc.Effect-blurplus.BlurStrength = 12;
       kwinrc.Effect-blurplus.RefractionStrength = 14;
-      kwinrc.Plugins.blurEnabled = false;
+      kwinrc.Plugins.blurEnabled = true;
       kwinrc.Plugins.glassEnabled = true;
       kwinrc.Tiling.padding = 4;
       kwinrc."Tiling/1dbf1322-8d5d-4841-8059-b7095ed8e0c8/38b3b77a-1967-4019-b48b-770f780952a9".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";

@@ -164,6 +164,7 @@ services.udev.extraRules = ''
     winetricks
     wineWow64Packages.waylandFull
     slimevr
+    solaar
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
