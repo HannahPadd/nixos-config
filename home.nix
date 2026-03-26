@@ -53,6 +53,7 @@ in
     librewolf
     thunderbird
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    obs-studio
 
     blender
 
@@ -63,6 +64,7 @@ in
     appimage-run
     moonlight-qt
     parsec-bin
+    dotnetCorePackages.sdk_9_0_1xx-bin
 
     ##These are boken right now :(
     #inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default # for KDE Wayland
@@ -149,6 +151,10 @@ in
     enable = true;
     settings.user.name = "HannahPadd";
     settings.user.email = "hannah@lindrob.nl";
+  };
+
+  programs.obs-studio = {
+    enable = true;
   };
 
   programs.alacritty = {
