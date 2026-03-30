@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -17,23 +22,26 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-/*
-  boot.kernelPatches = [
-  {
-    name = "amdgpu-ignore-ctx-privileges";
-    patch = pkgs.fetchpatch {
-      name = "cap_sys_nice_begone.patch";
-      url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-      hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-    };
-  }
-];
-*/
+  /*
+      boot.kernelPatches = [
+      {
+        name = "amdgpu-ignore-ctx-privileges";
+        patch = pkgs.fetchpatch {
+          name = "cap_sys_nice_begone.patch";
+          url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+          hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+        };
+      }
+    ];
+  */
 
   networking.hostName = "framework-hannah"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -67,7 +75,6 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -93,14 +100,14 @@
     #media-session.enable = true;
   };
 
-services.udev.extraRules = ''
+  services.udev.extraRules = ''
     ## SlimeVR
     # USB parent device
     SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="7690", MODE="0666", TAG+="uaccess"
-    
+
     # HID interface
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="7690", MODE="0666", TAG+="uaccess"
-    
+
     # Serial interface (this applies directly to /dev/ttyACM0)
     SUBSYSTEM=="tty", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="7690", MODE="0666", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
   '';
@@ -111,7 +118,15 @@ services.udev.extraRules = ''
   users.users.hannah = {
     isNormalUser = true;
     description = "Hannah Lynn Lindrob";
-    extraGroups = [ "networkmanager" "wheel" "audio" "dialout" "plugdev" "docker" "uucp" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "dialout"
+      "plugdev"
+      "docker"
+      "uucp"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -122,15 +137,14 @@ services.udev.extraRules = ''
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.libvirtd = {
-  enable = true;
-  qemu = {
-    package = pkgs.qemu_kvm;
-    runAsRoot = true;
-    swtpm.enable = true; # Enables TPM emulator
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true; # Enables TPM emulator
     };
   };
-  users.groups.libvirtd.members = ["hannah"];
-
+  users.groups.libvirtd.members = [ "hannah" ];
 
   virtualisation.docker.enable = true;
 
@@ -150,7 +164,6 @@ services.udev.extraRules = ''
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -164,20 +177,20 @@ services.udev.extraRules = ''
     winetricks
     wineWow64Packages.waylandFull
     slimevr
-    solaar
+    wireguard-tools
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-   programs.gnupg.agent = {
+  programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
 
   programs.steam = {
     enable = true; # Master switch, already covered in installation
-    remotePlay.openFirewall = true;  # Open ports in the firewall for Steam Remote Play
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server hosting
     # Other general flags if available can be set here.
   };
@@ -194,15 +207,31 @@ services.udev.extraRules = ''
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  
+
   services.flatpak.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 57621 35903 6969 8266 ];
-  networking.firewall.allowedUDPPorts = [ 5353 21110 ];
+  networking.firewall.allowedTCPPorts = [
+    57621
+    35903
+    6969
+    8266
+  ];
+  networking.firewall.allowedUDPPorts = [
+    5353
+    21110
+    51820
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  networking.wireguard.enable = true;
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      configFile = "/home/hannah/nixos-config/WireGuard-VPN-Hannah.conf";
+    };
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -211,4 +240,3 @@ services.udev.extraRules = ''
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 }
-

@@ -53,7 +53,6 @@ in
     librewolf
     thunderbird
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    obs-studio
 
     blender
 
@@ -78,6 +77,7 @@ in
     kdePackages.krdc
     catppuccin-kvantum
     prismlauncher
+    itgmania
 
     jetbrains.idea-oss
     neovim
@@ -91,6 +91,7 @@ in
     zsh
     hyfetch
     gimp
+    xonotic
 
     nnn # terminal file manager
 
@@ -153,9 +154,6 @@ in
     settings.user.email = "hannah@lindrob.nl";
   };
 
-  programs.obs-studio = {
-    enable = true;
-  };
 
   programs.alacritty = {
     enable = true;
