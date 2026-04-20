@@ -207,8 +207,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
   services.flatpak.enable = true;
+  services.hardware.bolt.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -227,11 +227,13 @@
 
   networking.wireguard.enable = true;
 
+/*
   networking.wg-quick.interfaces = {
     wg0 = {
       configFile = "/home/hannah/nixos-config/WireGuard-VPN-Hannah.conf";
     };
   };
+  */
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
