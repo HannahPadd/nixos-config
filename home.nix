@@ -152,6 +152,7 @@ in
     enable = true;
     settings.user.name = "HannahPadd";
     settings.user.email = "hannah@lindrob.nl";
+    settings.init.defaultBranch = "main";
   };
 
 
