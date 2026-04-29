@@ -47,11 +47,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1776510231,
-        "narHash": "sha256-xdrtJ+5c/y5opUlh8XEzQs3fPBceMClhAoOF1UkFJns=",
+        "lastModified": 1776847026,
+        "narHash": "sha256-47v8SJNeRyZToOBsyJZ+WoKI/wJeDAoqHJHSUlXJDL4=",
         "owner": "4v3ngR",
         "repo": "kwin-effects-glass",
-        "rev": "cb959e8115c54f535176d065b43901892bd82366",
+        "rev": "8efd13c64068e9d03a31d607e9690690268c007f",
         "type": "github"
       },
       "original": {
@@ -83,11 +83,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1776434932,
-        "narHash": "sha256-gyqXNMgk3sh+ogY5svd2eNLJ6oEwzbAeaoBrrxD0lKk=",
+        "lastModified": 1776560675,
+        "narHash": "sha256-p68udKWWh7+V4ZPpcMDq0gTHWNZJnr4JPI+kHPPE40o=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c7f47036d3df2add644c46d712d14262b7d86c0c",
+        "rev": "e07580dae39738e46609eaab8b154de2488133ce",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776589301,
-        "narHash": "sha256-3g+BPNYwKrjOtBaQi1cLBEtLKtDLZAS01gFd6/ybtlE=",
+        "lastModified": 1776845530,
+        "narHash": "sha256-2Vm9rjVevSZVDZW4uyZ2uK1Sz2p8mvIx4EQBnUZ5trc=",
         "ref": "refs/heads/master",
-        "rev": "9a54119893bdd30fec628063322bc726f96afc1f",
-        "revCount": 803,
+        "rev": "b850b8a1a9898b7c211834a3da91034194a125e1",
+        "revCount": 805,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },

@@ -64,6 +64,7 @@ in
     moonlight-qt
     parsec-bin
     dotnetCorePackages.sdk_9_0_1xx-bin
+    opencode
 
     ##These are boken right now :(
     #inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default # for KDE Wayland
@@ -196,6 +197,32 @@ in
     };
   };
 
+  home.file.".config/opencode/opencode.json".text = builtins.toJSON {
+    "$schema" = "https://opencode.ai/config.json";
+    "model" = "ollama/gemma4:26b";
+    "provider" = {
+      "ollama" = {
+        "npm" = "@ai-sdk/openai-compatible";
+        "name" = "Remote Ollama Server";
+        "options" = {
+          "baseURL" = "http://192.168.1.162:11434/v1";
+        };
+        "models" = {
+          "qwen3.6:27b" = { "name" = "Qwen 3.6 (27B)"; };
+          "gemma4:31b" = { "name" = "Gemma 4 (31B)"; };
+          "qwen3.6:latest" = { "name" = "Qwen 3.6 (Latest)"; };
+          "qwen3.5:27b" = { "name" = "Qwen 3.5 (27B)"; };
+          "gemma4:26b" = { "name" = "Gemma 4 (26B)"; };
+          "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:latest" = { "name" = "Qwen3 Coder (GGUF)"; };
+          "devstral:latest" = { "name" = "Devstral"; };
+          "qwen2.5-coder:32b-instruct-q4_K_M" = { "name" = "Qwen 2.5 Coder (32B Q4)"; };
+          "gemma3:27b-it-q8_0" = { "name" = "Gemma 3 (27B IT Q8)"; };
+          "deepseek-r1:1.5b" = { "name" = "DeepSeek R1 (1.5B)"; };
+          "qwen3.5:latest" = { "name" = "Qwen 3.5 (Latest)"; };
+        };
+      };
+    };
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
