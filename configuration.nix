@@ -148,10 +148,12 @@
 
   virtualisation.docker.enable = true;
 
+/*
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
   };
+  */
   security.wrappers = {
     docker-rootlesskit = {
       owner = "root";

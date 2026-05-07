@@ -196,7 +196,6 @@ in
       };
     };
   };
-
   home.file.".config/opencode/opencode.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
     "model" = "ollama/gemma4:26b";
