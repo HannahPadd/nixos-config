@@ -5,6 +5,8 @@
     # NixOS official package source, using the nixos-25.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       # The `follows` keyword in inputs is used for inheritance.
@@ -47,13 +49,14 @@
 
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, plasma-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, plasma-manager, nixos-hardware, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations = {
       framework-hannah = nixpkgs.lib.nixosSystem {
 
         specialArgs = { inherit inputs; };
         modules = [
+          nixos-hardware.nixosModules.framework-16-amd-ai-300-series  
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./configuration.nix
