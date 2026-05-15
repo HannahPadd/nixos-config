@@ -55,6 +55,7 @@ in
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     blender
+    bambu-studio
 
     starship
     alacritty
@@ -65,6 +66,9 @@ in
     parsec-bin
     dotnetCorePackages.sdk_9_0_1xx-bin
     opencode
+
+    httpie
+    httpie-desktop
 
     ##These are boken right now :(
     #inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default # for KDE Wayland

@@ -197,16 +197,24 @@
   services.flatpak.enable = true;
   services.hardware.bolt.enable = true;
 
+  programs.nix-ld.enable = true;
+programs.nix-ld.libraries = with pkgs; [
+  # Add common libraries here if needed
+];
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     57621
+    21110
     35903
     6969
     8266
   ];
   networking.firewall.allowedUDPPorts = [
     5353
-    21110
+    6969
+    8266
+    35903
     51820
   ];
   # Or disable the firewall altogether.
