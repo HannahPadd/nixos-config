@@ -149,8 +149,11 @@ in
     pciutils # lspci
     usbutils # lsusb
     direnv
+    lmstudio
     wayvr
     xrizer
+
+    libreoffice
   ];
 
   programs.git = {

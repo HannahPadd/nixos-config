@@ -197,10 +197,14 @@
   services.flatpak.enable = true;
   services.hardware.bolt.enable = true;
 
-  programs.nix-ld.enable = true;
-programs.nix-ld.libraries = with pkgs; [
-  # Add common libraries here if needed
-];
+  services.wivrn = {
+    enable = true;
+    openFirewall = true;
+
+    autoStart = true;
+
+    package = (pkgs.wivrn.override { cudaSupport = true; });
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -211,6 +215,7 @@ programs.nix-ld.libraries = with pkgs; [
     8266
   ];
   networking.firewall.allowedUDPPorts = [
+    2021
     5353
     6969
     8266
