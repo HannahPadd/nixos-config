@@ -48,6 +48,8 @@ in
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+kdePackages.partitionmanager
+    chromium
     oh-my-zsh
     nerd-fonts.jetbrains-mono 
     librewolf
@@ -55,8 +57,7 @@ in
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     blender
-    bambu-studio
-
+    filezilla
     starship
     alacritty
     discord-wl
@@ -154,6 +155,7 @@ in
     xrizer
 
     libreoffice
+    screen
   ];
 
   programs.git = {

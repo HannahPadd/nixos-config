@@ -38,6 +38,13 @@
   networking.hostName = "framework-hannah"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  nix = {
+    settings = {
+      max-jobs = 8;
+      cores = 12;
+    };
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -100,6 +107,11 @@
     #media-session.enable = true;
   };
 
+  services.udev.packages = with pkgs; [
+    segger-jlink
+    nrf-command-line-tools
+  ];
+
   services.udev.extraRules = ''
     ## SlimeVR
     # USB parent device
@@ -111,10 +123,7 @@
     # Serial interface (this applies directly to /dev/ttyACM0)
     SUBSYSTEM=="tty", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="7690", MODE="0666", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
   '';
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hannah = {
     isNormalUser = true;
     description = "Hannah Lynn Lindrob";
@@ -130,9 +139,26 @@
     shell = pkgs.zsh;
   };
 
-  # Install firefox.
+  # I hate this, why won't nrf debugging just work :(
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    e2fsprogs
+    libkrb5
+    gmp
+    gnutls
+    libidn
+    libidn2
+    ncurses
+    ncurses5
+    libxcrypt-legacy
+    zlib
+    glibc
+  ];
+
   programs.firefox.enable = true;
   programs.zsh.enable = true;
+
+  programs.partition-manager.enable = true;
 
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
@@ -150,10 +176,17 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.segger-jlink.acceptLicense = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "docker-28.5.2"
+    "segger-jlink-qt4-874"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    segger-jlink
+    nrf-command-line-tools
     git
     gh
     steam
@@ -227,12 +260,12 @@
 
   networking.wireguard.enable = true;
 
-/*
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      configFile = "/home/hannah/nixos-config/WireGuard-VPN-Hannah.conf";
+  /*
+    networking.wg-quick.interfaces = {
+      wg0 = {
+        configFile = "/home/hannah/nixos-config/WireGuard-VPN-Hannah.conf";
+      };
     };
-  };
   */
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
